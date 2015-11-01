@@ -35,6 +35,7 @@ TEST_F(SoundexEncoding, LimitsLengthToFourCharacters) {
 
 TEST_F(SoundexEncoding, IgnoresVowelLikeLetters) {
     ASSERT_THAT(soundex.encode("Baeiouhycdl"), testing::Eq("B234"));
+    ASSERT_THAT(soundex.encode("BaAeEiIoOuUhHyYcdl"), testing::Eq("B234"));
 }
 
 TEST_F(SoundexEncoding, CombinesDuplicateEncodings) {
@@ -46,4 +47,8 @@ TEST_F(SoundexEncoding, CombinesDuplicateEncodings) {
                 testing::Eq(soundex.encodedDigit('t')));
 
     ASSERT_THAT(soundex.encode("Abfcgdt"), testing::Eq("A123"));
+}
+
+TEST_F(SoundexEncoding, UppercasesFirstLetter) {
+    ASSERT_THAT(soundex.encode("abcd"), testing::StartsWith("A"));
 }
