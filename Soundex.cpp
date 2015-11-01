@@ -22,6 +22,9 @@ class Soundex {
         std::string encodedDigits(const std::string& word) const {
             std::string encoding {""};
             for (auto letter: word) {
+                if (isComplete(encoding)) {
+                    break;
+                }
                 encoding += encodedDigit(letter);
             }
             return encoding;
@@ -41,6 +44,9 @@ class Soundex {
             return encodings.end() == iterator ? "" : iterator->second;
         }
 
+        bool isComplete(const std::string& encoding) const {
+            return encoding.length() == MaxCodeLength - 1;
+        }
         std::string zeroPad(const std::string& word) const {
             auto zerosNeeded = MaxCodeLength - word.length();
             return word + std::string(zerosNeeded, '0');
