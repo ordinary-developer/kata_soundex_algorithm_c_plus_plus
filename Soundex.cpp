@@ -21,7 +21,7 @@ class Soundex {
                 {'m', "5"}, {'n', "5"},
                 {'r', "6"}
             };
-            auto iterator = encodings.find(letter);
+            auto iterator = encodings.find(lower(letter));
             return encodings.end() == iterator ? NotADigit : iterator->second;
         }
 
@@ -64,6 +64,10 @@ class Soundex {
         std::string upperFront(const std::string& string) const {
             return std::string(1,
                 std::toupper(static_cast<unsigned char>(string.front())));
+        }
+
+        char lower(char c) const {
+            return std::tolower(static_cast<unsigned char>(c));
         }
 
         std::string zeroPad(const std::string& word) const {
