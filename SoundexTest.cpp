@@ -18,6 +18,6 @@ TEST_F(SoundexEncoding, PadsWithZerosToEnsureTreeDigits) {
 }
 
 TEST_F(SoundexEncoding, ReplacesConsonantsWithAppropriateDigits) {
-    ASSERT_THAT(soundex.encode("Ab"), testing::Eq("A100"));
+    ASSERT_THAT(soundex.encode("Ax"), testing::Eq("A200"));
 }
 
