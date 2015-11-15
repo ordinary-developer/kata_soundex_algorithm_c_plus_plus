@@ -38,6 +38,7 @@ class Soundex {
                 {'m', "5"}, {'n', "5"},
                 {'r', "6"}
             };
-            return encodings.find(letter)->second;
+            auto iterator =  encodings.find(letter);
+            return encodings.end() == iterator ? "" : iterator->second;
         }
 };

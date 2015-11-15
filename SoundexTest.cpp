@@ -22,4 +22,9 @@ TEST_F(SoundexEncoding, ReplacesConsonantsWithAppropriateDigits) {
     ASSERT_THAT(soundex.encode("Ax"), testing::Eq("A200"));
 }
 
+TEST_F(SoundexEncoding, IgnoresNonAlphabetics) {
+    // arrange - act - assert
+    ASSERT_THAT(soundex.encode("A#"), testing::Eq("A000"));
+}
+
 
