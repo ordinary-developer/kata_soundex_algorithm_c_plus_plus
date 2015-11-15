@@ -59,5 +59,9 @@ TEST_F(SoundexEncoding, UppercasesFirstLetter) {
     ASSERT_THAT(soundex.encode("abcd"), testing::StartsWith("A"));
 }
 
-
+TEST_F(SoundexEncoding, IgnoresCaseWhenEncodingConsonants) {
+    // ARRANGE - ACT - ASSERT
+    ASSERT_THAT(soundex.encode("BCDL"), 
+            testing::Eq(soundex.encode("Bcdl")));
+}
 
