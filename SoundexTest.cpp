@@ -33,6 +33,13 @@ TEST_F(SoundexEncoding, ReplacesMultipleConsonantsWithDigits) {
 }
 
 TEST_F(SoundexEncoding, LimitsLengthToFourCharacters) {
+    // ARRANGE - ACT - ASSERT
     ASSERT_THAT(soundex.encode("Dcdlb").length(), testing::Eq(4u));
 }
+
+TEST_F(SoundexEncoding, IgnoresVowelLikeLetters) {
+    // ARRANGE - ACT - ASSERT
+    ASSERT_THAT(soundex.encode("Baeiouhycdl"), testing::Eq("B234"));
+}
+
 
