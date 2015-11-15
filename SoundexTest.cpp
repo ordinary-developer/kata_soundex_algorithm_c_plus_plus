@@ -27,4 +27,8 @@ TEST_F(SoundexEncoding, IgnoresNonAlphabetics) {
     ASSERT_THAT(soundex.encode("A#"), testing::Eq("A000"));
 }
 
+TEST_F(SoundexEncoding, ReplacesMultipleConsonantsWithDigits) {
+    // ARRANGE - ACT - ASSERT
+    ASSERT_THAT(soundex.encode("Acdl"), testing::Eq("A234"));
+}
 
