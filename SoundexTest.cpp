@@ -19,7 +19,7 @@ TEST_F(SoundexEncoding, PadsWithZerosToEnsureThreeDigits) {
 
 TEST_F(SoundexEncoding, ReplacesConsonantsWithAppropriateDigits) {
     // [ARRANGE] - [ACT] - [ASSERT]
-    ASSERT_THAT(soundex.encode("Ab"), testing::Eq("A100"));
+    ASSERT_THAT(soundex.encode("Ax"), testing::Eq("A200"));
 }
 
 
